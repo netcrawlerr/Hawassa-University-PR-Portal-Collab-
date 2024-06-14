@@ -1,0 +1,46 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Data Charts</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/chart.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>Basic Data Charts</header>
+    <div class="main">
+      <div class="sidebar">
+        <select id="chartType" onchange="updateChartType()">
+          <option value="bar">Bar Chart</option>
+          <option value="line">Line Chart</option>
+          <option value="pie">Pie Chart</option>
+        </select>
+        <button onclick="loadData(0)">Dataset 1</button>
+        <button onclick="loadData(1)">Dataset 2</button>
+        <button onclick="loadData(2)">Dataset 3</button>
+        <button onclick="loadData(3)">Dataset 4</button>
+        <button onclick="loadData(4)">Dataset 5</button>
+        <button onclick="loadData(5)">Dataset 6</button>
+        <button onclick="loadData(6)">Dataset 7</button>
+        <button onclick="loadData(7)">Dataset 8</button>
+        <button onclick="loadData(8)">Dataset 9</button>
+        <button onclick="loadData(9)">Dataset 10</button>
+        <button onclick="loadData(10)">Dataset 11</button>
+        <button onclick="loadData(11)">Dataset 12</button>
+        <button onclick="loadData(12)">Dataset 13</button>
+      </div>
+      <div class="content">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/chart.js"></script>
+</html>

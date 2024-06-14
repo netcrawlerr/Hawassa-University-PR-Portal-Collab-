@@ -1,0 +1,80 @@
+firstname
+lastname
+email
+username
+password
+sex
+mobile number
+department
+
+
+[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
+{April 16-29}
+<> UI 
+<> Dynamicity
+<> Events
+<> Arcihtecture
+<> views
+<> CSS
+
+
+
+{May 4th 2024}
+<> Done with Login Logout System Of the Project
+<> Upon Login labes the logged in user by name
+
+{May 5th 2024}
+<> Done with protecting pages
+<> Done with create report Route for simple user (Department Head)
+
+{May 6th 2024}
+<> Done with informatics route, protected the page
+<> Done with create report1-9 Route for each departments and protected the pages
+
+{May 7th 2024}
+<> Setup Profile Route
+<> Done with view Report for normal user (Department Head)
+<> Setup Route for informaticsDashboard 
+    {
+        informaticshead : is username for informatics head, 
+    }
+<> All the Tabular report filling form UI (Pain)
+
+
+{May 8th 2024}
+<> better auth
+<> identified required fields for user profiles 
+
+{May 9th 2024}
+<> 
+
+{May 10th 2024}
+<>
+
+{May 11th 2024}
+<> nothing
+
+{May 12th and 13th 2024}
+<> Integrate the tabular form to the existing form 
+<> setup new routes 
+<> Dashboard for the 5 departments 
+<> dyamically added the 'name' attribute so i can access textarea later
+<> finish the profile page
+<> setup routes for planning
+
+
+
+
+
+{
+
+    i can render the informaticsheadViewReport page by checking of the 
+    position of the logged in user is informaticshead but this foces me
+    to have only the following user namings....
+            <> informaticshead 
+            <> admin, netcrawler [these are the admins]
+            <> ithead, ishead, cshead
+            <> maybe i will have normal users 
+
+}

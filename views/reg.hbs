@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Management Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.actions button {
+    padding: 5px 10px;
+    font-size: 0.9em;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+  </style>
+    <div class="container">
+        <h1>Admin Management Page</h1>
+        
+        <section id="register-section">
+            <h2>Register New User</h2>
+            <form id="registerUserForm">
+                <div class="form-group">
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" name="first-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name:</label>
+                    <input type="text" id="last-name" name="last-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="role">Role:</label>
+                    <input type="text" id="role" name="role" required>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+        </section>
+
+        <section id="user-list-section">
+            <h2>Registered Users</h2>
+            <table id="userTable">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- User rows will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <!-- Update User Modal -->
+    <div id="updateUserModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Update User</h2>
+            <form id="updateUserForm">
+                <div class="form-group">
+                    <label for="update-first-name">First Name:</label>
+                    <input type="text" id="update-first-name" name="first-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="update-last-name">Last Name:</label>
+                    <input type="text" id="update-last-name" name="last-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="update-email">Email:</label>
+                    <input type="email" id="update-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="update-role">Role:</label>
+                    <input type="text" id="update-role" name="role" required>
+                </div>
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+
+<script>document.addEventListener('DOMContentLoaded', () => {
+    // Get the modal
+    const modal = document.getElementById('updateUserModal');
+
+    // Get the <span> element that closes the modal
+    const span = document.getElementsByClassName('close')[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = () => {
+        modal.style.display = 'none';
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+
+    // Handle the register form submission
+    document.getElementById('registerUserForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const user = {
+            id: Date.now(),
+            firstName: formData.get('first-name'),
+            lastName: formData.get('last-name'),
+            email: formData.get('email'),
+            password: formData.get('password'),
+            role: formData.get('role')
+        };
+        addUserToTable(user);
+        event.target.reset();
+        // Add your fetch request for registering the user here
+    });
+
+    // Function to open the update modal
+    const openUpdateModal = (user) => {
+        modal.style.display = 'block';
+        document.getElementById('update-first-name').value = user.firstName;
+        document.getElementById('update-last-name').value = user.lastName;
+        document.getElementById('update-email').value = user.email;
+        document.getElementById('update-role').value = user.role;
+        document.getElementById('updateUserForm').dataset.userId = user.id;
+    };
+
+    // Handle the update form submission
+    document.getElementById('updateUserForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const userId = event.target.dataset.userId;
+        const formData = new FormData(event.target);
+        const updatedUser = {
+            id: userId,
+            firstName: formData.get('first-name'),
+            lastName: formData.get('last-name'),
+            email: formData.get('email'),
+            role: formData.get('role')
+        };
+        updateUserInTable(updatedUser);
+        modal.style.display = 'none';
+        // Add your fetch request for updating the user here
+    });
+
+    // Example function to add a row to the user table
+    const addUserToTable = (user) => {
+        const table = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+        const row = table.insertRow();
+        row.insertCell(0).innerText = user.firstName;
+        row.insertCell(1).innerText = user.lastName;
+        row.insertCell(2).innerText = user.email;
+        row.insertCell(3).innerText = user.role;
+        const actionsCell = row.insertCell(4);
+        actionsCell.classList.add('actions');
+        const updateButton = document.createElement('button');
+        updateButton.innerText = 'Update';
+        updateButton.onclick = () => openUpdateModal(user);
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = 'Delete';
+        deleteButton.onclick = () => {
+            table.deleteRow(row.rowIndex - 1);
+            // Add your fetch request for deleting the user here
+        };
+        actionsCell.appendChild(updateButton);
+        actionsCell.appendChild(deleteButton);
+    };
+
+    // Example function to update a row in the user table
+    const updateUserInTable = (user) => {
+        const rows = document.getElementById('userTable').getElementsByTagName('tbody')[0].rows;
+        for (let row of rows) {
+            if (row.cells[2].innerText === user.email) {
+                row.cells[0].innerText = user.firstName;
+                row.cells[1].innerText = user.lastName;
+                row.cells[3].innerText = user.role;
+                break;
+            }
+        }
+    };
+
+    // Example data - you would fetch this from your server
+    const users = [
+        { id: 1, firstName: 'John', lastName: 'Doe', email: 'john@example.com', role: 'Admin' },
+        { id: 2, firstName: 'Jane', lastName: 'Smith', email: 'jane@example.com', role: 'User' }
+    ];
+
+    // Populate the table with existing users
+    users.forEach(user => addUserToTable(user));
+});
+</script>
+    <script src="scripts.js"></script>
+</body>
+</html>

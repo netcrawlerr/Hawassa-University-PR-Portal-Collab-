@@ -1,0 +1,105 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report 7</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/createReport.css" />
+  </head>
+  <body>
+    <nav>
+      <img src="./logo.png" alt="" />
+      <!-- <p>Nav Bar Area</p> -->
+      <h1>HU PR PORTAL</h1>
+      <div class="dropdown">
+        <span class="account-icon" onclick="toggleDropdown()"><i
+            class="fa-regular fa-user"
+          ></i></span>
+        <div class="dropdown-content" id="dropdownContent">
+          <a href="/userDashboard">Dashboard</a>
+          <a href="/auth/logout">Logout</a>
+        </div>
+      </div>
+      {{! <span class="account-icon"><i class="fa-regular fa-user"></i></span> }}
+    </nav>
+    <div class="container">
+      <div class="sidebar">
+        <h2>Report Topics</h2>
+        <p>Click sidebar buttons to Insert reports</p>
+
+        <div class="goal-switcher">
+          <a href="/createReport1"><button name="goal_id" value="goal1">Goal 1</button></a>
+          <a href="/goal1Table"><button class="tabular-button">
+              Table 1</button></a>
+        </div>
+
+        <div class="goal-switcher">
+          <a href="/createReport2"><button name="goal_id" value="goal2">Goal 2</button></a>
+          <a href="/goal2Table "><button class="tabular-button">Table 2</button></a>
+        </div>
+
+        <div class="goal-switcher">
+          <a href="/createReport3"><button name="goal_id" value="goal3">Goal 3</button></a>
+          <a href="/goal3Table "><button class="tabular-button">Table 3</button></a>
+        </div>
+
+        <div class="goal-switcher">
+          <a href="/createReport4"><button name="goal_id" value="goal4">Goal 4</button></a>
+          <a href="/goal4Table "><button class="tabular-button">Table 4</button></a>
+        </div>
+
+        <div class="goal-switcher">
+          <a href="/createReport5"><button name="goal_id" value="goal5">Goal 5</button></a>
+          <a href="/goal5Table "><button class="tabular-button">Table 5</button></a>
+        </div>
+
+        <div class="goal-switcher">
+          <a href="/createReport6"><button name="goal_id" value="goal6">Goal 6</button></a>
+          <a href="/goal6Table "><button class="tabular-button">Table 6</button></a>
+        </div>
+
+        <div class="goal-switcher">
+          <a href="#"><button
+              name="goal_id"
+              value="goal7"
+              onclick="showReportDetails(7)"
+            >Goal 7</button></a>
+          <a href="/goal7Table"><button class="tabular-button">Table 7</button></a>
+        </div>
+
+        <div class="goal-switcher">
+          <a href="/createReport8"><button name="goal_id" value="goal8">Goal 8</button></a>
+          <a href="/goal8Table "><button class="tabular-button">Table 8</button></a>
+        </div>
+
+        <div class="goal-switcher">
+          <a href="/createReport9"><button name="goal_id" value="goal9">Goal 9</button></a>
+          <a href="/goal9Table "><button class="tabular-button">Table 9</button></a>
+        </div>
+
+      </div>
+      <div class="report-details">
+        <h1 id="reportTitle">Report 7 Details</h1>
+        <form id="reportForm" action="/tasks/submitReport" method="POST">
+          <div id="reportTopics">
+            <!-- place to add dynamicaaly -->
+          </div>
+          <button
+            class="add-detail-button"
+            id="addDetailButton"
+            type="button"
+            onclick="addReportDetail()"
+          >
+            Add Detail
+          </button>
+          <button type="submit" id="submitButton">Submit Reports</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="/createReportScript.js"></script>
+  </body>
+</html>

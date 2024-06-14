@@ -1,0 +1,87 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="deleteUser.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <title>Delete User</title>
+  </head>
+  <body class="poppins-thin">
+    <nav>
+      <img src="./logo.png" alt="" />
+
+      <h1>HU PR PORTAL</h1>
+      <div class="dropdown">
+        <span class="account-icon" onclick="toggleDropdown()"><i
+            class="fa-regular fa-user"
+          ></i></span>
+        <div class="dropdown-content" id="dropdownContent">
+          <a href="/userDashboard">Dashboard</a>
+          <a href="/auth/logout">Logout</a>
+        </div>
+      </div>
+      {{! <span class="account-icon"><i class="fa-regular fa-user"></i></span> }}
+    </nav>
+    <h1 id="addmember">Delete Staff Member</h1>
+
+    <div class="list-user-delete-user-container">
+      <div class="list-users">
+        <h4>List of users</h4>
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Position</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each users}}
+              <tr>
+                <td class="user-username">{{this.username}}</td>
+                <td class="user-firstname">{{this.firstName}}</td>
+                <td class="user-lastname">{{this.lastName}}</td>
+                <td class="user-email">{{this.email}}</td>
+                <td class="user-position">{{this.position}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="container">
+        <div class="sign-up">
+
+          <form action="/auth/deleteUser" method="POST">
+            {{!-- <h3>Enter Username Of User to Delete</h3> --}}
+            <div class="form-group">
+              {{#if message}}
+                <h3 style="color: red;">{{message}}</h3>
+              {{/if}}
+
+              <input
+                type="text"
+                required
+                name="username"
+                placeholder="username"
+                id="username"
+              />
+            </div>
+            <input type="submit" value="Delete User" />
+          </form>
+        </div>
+        {{! <div class="vector">
+          <img src="/adduser.svg" alt="" />
+        </div> }}
+
+      </div>
+
+    </div>
+  </body>
+</html>

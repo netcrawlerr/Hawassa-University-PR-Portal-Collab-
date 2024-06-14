@@ -1,0 +1,108 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/register.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <title>Register User</title>
+  </head>
+  <body>
+    <nav>
+      <img src="/logo.png" alt="" />
+
+      <h1>HU PR PORTAL</h1>
+      <div class="dropdown">
+        <span class="account-icon" onclick="toggleDropdown()"><i
+            class="fa-regular fa-user"
+          ></i></span>
+        <div class="dropdown-content" id="dropdownContent">
+          <a href="/userDashboard">Dashboard</a>
+          <a href="/auth/logout">Logout</a>
+        </div>
+      </div>
+      {{! <span class="account-icon"><i class="fa-regular fa-user"></i></span> }}
+    </nav>
+    <h1 id="addmember">Add Staff Member</h1>
+    <div class="container">
+      <div class="sign-up">
+        <form action="/auth/register" method="POST">
+          {{#if message}}
+            <h2
+              id="message"
+              style="background-color: brown; color: white; padding: 5px; text-align: center; border-radius: 3px; margin-bottom: 10px;"
+            >{{message}}</h2>
+          {{/if}}
+
+          <div class="form-group">
+
+            <input
+              type="text"
+              required
+              name="username"
+              placeholder="Username *"
+              id="username"
+            />
+          </div>
+          <div class="form-group">
+
+            <input
+              type="password"
+              required
+              name="password"
+              placeholder="Password *"
+              id="password"
+            />
+          </div>
+          <div class="form-group">
+
+            <input
+              type="text"
+              required
+              name="firstName"
+              placeholder="First Name"
+              id="firstName"
+            />
+          </div>
+          <div class="form-group">
+
+            <input
+              type="text"
+              required
+              name="lastName"
+              placeholder="Last Name"
+              id="lastName"
+            />
+          </div>
+          <div class="form-group">
+
+            <input
+              type="email"
+              required
+              name="email"
+              placeholder="E-mail"
+              id="email"
+            />
+          </div>
+          <div class="form-group">
+
+            <input
+              type="text"
+              required
+              name="position"
+              placeholder="Position"
+              id="position"
+            />
+          </div>
+          <input type="submit" value="Register User" />
+        </form>
+      </div>
+      <div class="vector">
+        <img src="/adduser.svg" alt="" />
+      </div>
+    </div>
+  </body>
+
+</html>

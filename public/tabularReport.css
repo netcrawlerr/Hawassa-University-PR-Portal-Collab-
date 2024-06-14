@@ -1,0 +1,99 @@
+table,
+td,
+th {
+  border: 1px solid #595959;
+  border-collapse: collapse;
+  text-align: center;
+}
+td,
+th {
+  padding: 3px;
+  height: 25px;
+}
+th {
+  background: #f0e6cc;
+}
+.even {
+  background: #fbf8f0;
+}
+.odd {
+  background: #fefcf9;
+}
+
+/* Set a specific width for the second column */
+td:nth-child(2) {
+  width: 180px; /* Adjust the width as needed */
+}
+
+/* Make input fields take up the entire width and height */
+td input {
+  width: 100%;
+  border: none;
+  height: 100%;
+  box-sizing: border-box; /* Ensure padding is included in the width and height */
+}
+td {
+  /* height: 20px; */
+}
+tr:nth-child(1) {
+  background-color: rgb(82, 139, 185);
+}
+
+/* Set a specific width for the table */
+table {
+  margin: auto;
+  width: 100%; /* Adjust the width as needed */
+}
+.submit {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.submit input {
+  padding: 10px;
+  background-color: rgb(26, 206, 122);
+  color: rgb(255, 255, 255);
+  margin-bottom: 20px;
+  border: none;
+  width: 180px;
+  font-size: 20px;
+}
+.form-goalnumber {
+  /* background-color: red; */
+  padding: 10px;
+}
+
+#tabular {
+  background-color: rgb(6, 156, 99);
+}
+
+.goalSelection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  margin: auto;
+}
+.goal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 240px;
+  height: 150px;
+  background-color: rgb(49, 110, 145);
+  color: white;
+  border-radius: 7px;
+}
+
+.goal:hover {
+  border-radius: 0px;
+  transform: scale(1.04);
+  transition: 0.3s;
+  cursor: pointer;
+}
+.goalSelection a {
+  text-decoration: none;
+}
