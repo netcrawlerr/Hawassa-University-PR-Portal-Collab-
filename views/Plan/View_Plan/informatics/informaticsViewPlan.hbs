@@ -1,0 +1,110 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/informatics.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <style>
+
+    </style>
+    <nav>
+      <img src="/logo.png" alt="" />
+
+      <h1>HU PR PORTAL</h1>
+      <div class="dropdown">
+        <span class="account-icon" onclick="toggleDropdown()"><i
+            class="fa-regular fa-user"
+          ></i></span>
+        <div class="dropdown-content" id="dropdownContent">
+          <a href="/userDashboard">Dashboard</a>
+          <a href="/auth/logout">Logout</a>
+        </div>
+      </div>
+      {{! <span class="account-icon"><i class="fa-regular fa-user"></i></span> }}
+    </nav>
+
+    <button class="btn">Informatics</button>
+
+    <div class="info">
+      <p>Select the Plan You Want To See</p>
+    </div>
+
+    <div class="container">
+      <div>
+        <form action="/tasks/viewPlan" method="post">
+
+          <h4>Select Department</h4>
+          <select name="department" id="departmentSelect">
+            <option value="cshead">Computer Science</option>
+            <option value="ithead">Information Technology</option>
+            <option value="ishead">Information System</option>
+          </select>
+
+          <h4>Select Goal Number</h4>
+          <select name="goal_id" id="categorySelect">
+            <option value="1">Goal 1</option>
+            <option value="2">Goal 2</option>
+            <option value="3">Goal 3</option>
+            <option value="4">Goal 4</option>
+            <option value="5">Goal 5</option>
+            <option value="6">Goal 6</option>
+            <option value="7">Goal 7</option>
+            <option value="8">Goal 8</option>
+            <option value="9">Goal 9</option>
+          </select>
+          <button id="select-dep" type="submit">Show Plans</button>
+        </form>
+
+        <form action="">
+          <input type="submit" name="" value="Generate Report" id="" />
+        </form>
+      </div>
+
+      <div id="reportTopics">
+        <div class="report-details">
+          <h1 id="reportTitle">Plan {{goal_id}} Details</h1>
+          <div id="reportContent">
+            {{#if plans}}
+              <form id="form-textarea" action="/tasks/editPlan" method="post">
+                <input
+                  type="hidden"
+                  id="goal_id"
+                  name="goal_id"
+                  value="{{goal_id}}"
+                />
+                <ol>
+                  {{#each plans}}
+                    <div style="display: flex; align-items: center;">
+                      <textarea
+                        name="reports[{{@index}}]"
+                        disabled
+                        style="flex-grow: 1; margin-right: 10px;"
+                      >{{this.plan_details}}</textarea>
+                      <i
+                        class="fas fa-edit"
+                        style="color: #FFD43B; font-size: 26px;"
+                        onclick="toggleEdit()"
+                      ></i>
+                    </div>
+                  {{/each}}
+                </ol>
+                <input
+                  type="submit"
+                  value="Submit Edit"
+                  style="padding: 5px;"
+                />
+              </form>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

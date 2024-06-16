@@ -1,0 +1,152 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plan 7</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./createReport.css" />
+    <link rel="stylesheet" href="./tabularReport.css" />
+  </head>
+  <body>
+
+    <nav>
+      <img src="./logo.png" alt="" />
+      <!-- <p>Nav Bar Area</p> -->
+      <h1>HU PR PORTAL</h1>
+      <div class="dropdown">
+        <span class="account-icon"><i class="fa-regular fa-user"></i></span>
+        <div class="dropdown-content" id="dropdownContent">
+          <a href="/userDashboard">Dashboard</a>
+          <a href="/auth/logout">Logout</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="sidebar">
+        <h2>Report Topics</h2>
+        <p>Click sidebar buttons to Insert reports</p>
+
+        <div class="goal-switcher">
+          <a href="/createPlan1"><button>Goal 1</button></a>
+          <a href="/goal1TablePlan"><button class="tabular-button">
+              Table 1</button></a>
+        </div>
+
+        <div class="goal-switcher">
+          <a href="/createPlan2"><button>Goal 2</button></a>
+          <a href="/goal2TablePlan "><button class="tabular-button">Table 2</button></a>
+        </div>
+
+        <div class="goal-switcher">
+          <a href="/createPlan3"><button>Goal 3</button></a>
+          <a href="/goal3TablePlan "><button class="tabular-button">Table 3</button></a>
+        </div>
+
+        <div class="goal-switcher">
+          <a href="/createPlan4"><button>Goal 4</button></a>
+          <a href="/goal4TablePlan "><button class="tabular-button">Table 4</button></a>
+        </div>
+
+        <div class="goal-switcher">
+          <a href="/createPlan5"><button>Goal 5</button></a>
+          <a href="/goal5TablePlan "><button class="tabular-button">Table 5</button></a>
+        </div>
+
+        <div class="goal-switcher">
+          <a href="/createPlan6"><button>Goal 6</button></a>
+          <a href="/goal6TablePlan "><button class="tabular-button">Table 6</button></a>
+        </div>
+
+        <div class="goal-switcher">
+          <a href="/createPlan7"><button>Goal 7</button></a>
+          <a href="/goal7TablePlan "><button class="tabular-button">Table 7</button></a>
+        </div>
+
+        <div class="goal-switcher">
+          <a href="/createPlan8"><button>Goal 8</button></a>
+          <a href="/goal8TablePlan "><button class="tabular-button">Table 8</button></a>
+        </div>
+
+        <div class="goal-switcher">
+          <a href="/createPlan9"><button>Goal 9</button></a>
+          <a href="/goal9TablePlan "><button class="tabular-button">Table 9</button></a>
+        </div>
+      </div>
+
+      <div class="form-goalnumber">
+        <h1>Goal 7</h1>
+        <form action="/tasks/submitTablePlan7" method="post">
+          <input type="hidden" name="goal_id" value="7" id="" />
+          <table>
+            <tbody>
+              <tr>
+                <td rowspan="2">ግብ-7</td>
+                <td rowspan="2">ቁልፍ የውጤት አመላካቾች</td>
+                <td rowspan="2">መለኪያ</td>
+                <td rowspan="2">መነሻ (2015 እቅድ አፈጻጸም)</td>
+                <td rowspan="2">የ2016 እቅድ</td>
+                <td colspan="4">የ2016 በጀት ዓመት 3 ወራት እቅድ አፈፃፀም ሪፖርት</td>
+              </tr>
+              <tr>
+                <td>3 ወራት ዕቅድ</td>
+                <td>3 ወራት ዕቅድ አፈጻፀም</td>
+                <td>አፈፃፀም (%)</td>
+                <td>ምርመራ</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>የተጀመሩ አዳዲስ ትብብር ፕሮጀክቶች ብዛት</td>
+                <td>በቁጥር</td>
+                <td><input
+                    type="number"
+                    min="0"
+                    name="initial1"
+                    id="initial1"
+                    value=""
+                    required
+                  /></td>
+                <td><input
+                    type="number"
+                    min="0"
+                    name="final1"
+                    id="final1"
+                    required
+                  /></td>
+                <td><input
+                    type="number"
+                    min="0"
+                    name="threeMonthPlan1"
+                    id="threeMonthPlan1"
+                    required
+                  /></td>
+                <td><input
+                    type="number"
+                    min="0"
+                    readonly
+                    name="threeMonthPerformance1"
+                    id=""
+                    value=""
+                  /></td>
+                <td><input
+                    type="number"
+                    min="0"
+                    readonly
+                    name="totalPerformance1"
+                    id=""
+                    value=""
+                  /></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="submit">
+            <input type="submit" value="Submit" name="submit" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script src="/tabularReport.js"></script>
+</html>

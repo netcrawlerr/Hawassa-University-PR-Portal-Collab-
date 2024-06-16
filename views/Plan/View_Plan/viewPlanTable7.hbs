@@ -1,0 +1,124 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Plan 7</title>
+    <link rel="stylesheet" href="/viewReport.css" />
+    <link rel="stylesheet" href="/tabularReport.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav>
+      <img src="/logo.png" alt="HU PR PORTAL Logo" />
+      <h1>HU PR PORTAL</h1>
+      <div class="dropdown">
+        <span class="account-icon" onclick="toggleDropdown()"><i
+            class="fa-regular fa-user"
+          ></i></span>
+        <div class="dropdown-content" id="dropdownContent">
+          <a href="/userDashboard">Dashboard</a>
+          <a href="/auth/logout">Logout</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="sidebar">
+        <h2>Plan Topics</h2>
+        <p>Click sidebar buttons to view Plans</p>
+        <a href="/viewPlanTable1"><button id="report1Btn">Plan 1</button></a>
+        <a href="/viewPlanTable2"><button>Plan 2</button></a>
+        <a href="/viewPlanTable3"><button>Plan 3</button></a>
+        <a href="/viewPlanTable4"><button>Plan 4</button></a>
+        <a href="/viewPlanTable5"><button>Plan 5</button></a>
+        <a href="/viewPlanTable6"><button>Plan 6</button></a>
+        <a href="/viewPlanTable7"><button>Plan 7</button></a>
+        <a href="/viewPlanTable8"><button>Plan 8</button></a>
+        <a href="/viewPlanTable9"><button>Plan 9</button></a>
+      </div>
+
+      <div class="report-details">
+        <form id="reportForm" action="/tasks/viewPlanTable7" method="POST">
+          <input type="hidden" id="goal_id" name="goal_id" value={{goal_id}} />
+          <button type="submit" id="showReportsBtn">Show Plans</button>
+
+        </form>
+
+        {{#if plan}}
+          <form action="/tasks/editPlanTable7" method="post">
+            <table>
+              <tbody>
+                <tr>
+                  <td rowspan="2">ግብ-7</td>
+                  <td rowspan="2">ቁልፍ የውጤት አመላካቾች</td>
+                  <td rowspan="2">መለኪያ</td>
+                  <td rowspan="2">መነሻ (2015 እቅድ አፈጻጸም)</td>
+                  <td rowspan="2">የ2016 እቅድ</td>
+                  <td colspan="4">የ2016 በጀት ዓመት 3 ወራት እቅድ አፈፃፀም ሪፖርት</td>
+                </tr>
+                <tr>
+                  <td>3 ወራት ዕቅድ</td>
+                  <td>3 ወራት ዕቅድ አፈጻፀም</td>
+                  <td>አፈፃፀም (%)</td>
+                  <td>ምርመራ</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>የተጀመሩ አዳዲስ ትብብር ፕሮጀክቶች ብዛት</td>
+                  <td>በቁጥር</td>
+                  <td><input
+                      type="number"
+                      min="0"
+                      name="initial1"
+                      id="initial1"
+                      value={{plan.initial1}}
+                      required
+                    /></td>
+                  <td><input
+                      type="number"
+                      min="0"
+                      name="final1"
+                      id="final1"
+                      value={{plan.final1}}
+                      required
+                    /></td>
+                  <td><input
+                      type="number"
+                      min="0"
+                      name="threeMonthPlan1"
+                      id="threeMonthPlan1"
+                      value={{plan.threeMonthPlan1}}
+                      required
+                    /></td>
+                  <td><input
+                      type="number"
+                      min="0"
+                      readonly
+                      name="threeMonthPerformance1"
+                      id=""
+                      value=""
+                    /></td>
+                  <td><input
+                      type="number"
+                      min="0"
+                      readonly
+                      name="totalPerformance1"
+                      id=""
+                      value=""
+                    /></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <input type="submit" name="" value="Submit Edit" id="" />
+          </form>
+        {{/if}}
+      </div>
+    </div>
+
+    <script src="/viewReport.js"></script>
+  </body>
+</html>
