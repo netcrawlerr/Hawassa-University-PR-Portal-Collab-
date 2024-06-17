@@ -1,6 +1,7 @@
 import mysql from "mysql2";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
+import users from "./models/user.model.js";
 
 dotenv.config();
 
@@ -22,16 +23,16 @@ db.getConnection()
   });
 
 // get user by username
-export async function getUser(username) {
-  const [user] = await db.query(
-    `SELECT *
-     FROM
-     users
-     WHERE username = ?`,
-    [username]
-  );
-
-  return user[0];
+export async function getUser(email) {
+  // const [user] = await db.query(
+  //   `SELECT *
+  //    FROM
+  //    users
+  //    WHERE username = ?`,
+  //   [username]
+  // );
+  const user =  users.findAll({where:{email}})
+  return user;
 }
 
 // get all users
@@ -46,14 +47,16 @@ export async function getAllUsers() {
 
 // get user by id
 export async function getUserByID(id) {
-  const [users] = await db.query(
-    `SELECT *
-     FROM
-     users
-     WHERE id = ?`,
-    [id]
-  );
-  return users;
+  // const [users] = await db.query(
+  //   `SELECT *
+  //    FROM
+  //    users
+  //    WHERE id = ?`,
+  //   [id]
+  // );
+
+  const user = users.findAll({where: {id}})
+  return user;
 }
 
 export async function deleteUserFromDB(username) {
