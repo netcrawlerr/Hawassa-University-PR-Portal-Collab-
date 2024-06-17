@@ -171,19 +171,23 @@ function getTextareaValues() {
 // Function to submit report data
 function submitReportData() {
   const textareas = getTextareaValues(); // Get textarea values
-  const fields = document.getElementsByTagName('table input')
-
+  const fields = document.getElementsByClassName('datavaluess')
+ const datalist = Array.from(fields)
+  console.log("fields:", fields)
   var inputDetails = [];
 
 // Loop through the NodeList and collect the input details
-fields.forEach(function(input) {
+datalist.forEach(function(input) {
+  console.log(input.name)
     inputDetails.push({
         name: input.name,
         value: input.value
     });
 });
-  
-  const goalId = currentReport; // Use the currentReport variable as the goal_id
+
+
+console.log(inputDetails)
+//   const goalId = currentReport; // Use the currentReport variable as the goal_id
   fetch("/tasks/submitReport", {
     method: "POST",
     headers: {

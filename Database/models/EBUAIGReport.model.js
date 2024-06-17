@@ -76,7 +76,7 @@ data17:{type:DataTypes.INTEGER, allowNull:false},
 data18:{type:DataTypes.INTEGER, allowNull:false},
 data19:{type:DataTypes.INTEGER, allowNull:false},
 data20:{type:DataTypes.INTEGER, allowNull:false},
-approved: { type:DataTypes.STRING, allowNull:false},
+approved: { type:DataTypes.STRING, allowNull:true},
 feedback: {type: DataTypes.STRING(500), allowNull: true}
 })
 

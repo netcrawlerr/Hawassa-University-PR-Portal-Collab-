@@ -24,7 +24,7 @@ data4 : {
     type: DataTypes.FLOAT,
     allowNull:false
 },
-approved: { type: DataTypes.STRING, allowNull:false},
+approved: { type: DataTypes.STRING, allowNull:true},
 feedback: {type: DataTypes.STRING(500), allowNull: true}
 })
 
