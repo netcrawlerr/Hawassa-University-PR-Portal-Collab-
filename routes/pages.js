@@ -2,11 +2,18 @@ import express from "express";
 import authController from "../controllers/auth.js";
 import auth from "../controllers/auth.js";
 import { getAllUsers } from "../Database/database.js";
-
+import { privileges } from "../views/utils.js";
 const routerPages = express.Router();
 
 routerPages.get("/", (req, res) => {
   res.render("login");
+});
+routerPages.get("/summary", authController.isLoggedIn, (req, res) => {
+  if (req.user.email) {
+    res.render("../views/LastText.hbs");
+  } else {
+    res.redirect("/");
+  }
 });
 
 routerPages.get("/register", authController.isLoggedIn, (req, res) => {
@@ -108,7 +115,7 @@ routerPages.get("/chart", (req, res) => {
 // START OF >>> CREATE REPORT ROUTES
 {
   routerPages.get("/createReport1", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TextualReport/createReport1");
     } else {
       res.redirect("/");
@@ -116,7 +123,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/createReport2", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TextualReport/createReport2");
     } else {
       res.redirect("/");
@@ -124,7 +131,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/createReport3", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TextualReport/createReport3");
     } else {
       res.redirect("/");
@@ -132,7 +139,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/createReport4", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TextualReport/createReport4");
     } else {
       res.redirect("/");
@@ -140,7 +147,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/createReport5", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TextualReport/createReport5");
     } else {
       res.redirect("/");
@@ -148,7 +155,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/createReport6", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TextualReport/createReport6");
     } else {
       res.redirect("/");
@@ -156,7 +163,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/createReport7", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TextualReport/createReport7");
     } else {
       res.redirect("/");
@@ -164,7 +171,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/createReport8", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TextualReport/createReport8");
     } else {
       res.redirect("/");
@@ -172,7 +179,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/createReport9", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TextualReport/createReport9");
     } else {
       res.redirect("/");
@@ -185,7 +192,7 @@ routerPages.get("/chart", (req, res) => {
 
 {
   routerPages.get("/viewReport1", authController.isLoggedIn, (req, res) => {
-    if (req.user && req.user.position === "departmenthead") {
+    if (req.user && privileges.departmentHeads.includes(req.user.position)) {
       const goal_id = 1;
       console.log("Goal ID for viewReport1:", goal_id);
       res.render("../views/Report/View_Report/viewReport1", {
@@ -199,7 +206,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/viewReport2", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       const goal_id = 2;
       console.log("Goal ID for viewReport1:", goal_id);
       res.render("../views/Report/View_Report/viewReport2", {
@@ -210,7 +217,7 @@ routerPages.get("/chart", (req, res) => {
     }
   });
   routerPages.get("/viewReport3", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       const goal_id = 3;
       res.render("../views/Report/View_Report/viewReport3", {
         goal_id: goal_id,
@@ -220,7 +227,7 @@ routerPages.get("/chart", (req, res) => {
     }
   });
   routerPages.get("/viewReport4", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       const goal_id = 4;
       res.render("../views/Report/View_Report/viewReport4", {
         goal_id: goal_id,
@@ -230,7 +237,7 @@ routerPages.get("/chart", (req, res) => {
     }
   });
   routerPages.get("/viewReport5", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       const goal_id = 5;
       res.render("../views/Report/View_Report/viewReport5", {
         goal_id: goal_id,
@@ -240,7 +247,7 @@ routerPages.get("/chart", (req, res) => {
     }
   });
   routerPages.get("/viewReport6", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       const goal_id = 6;
       res.render("../views/Report/View_Report/viewReport6", {
         goal_id: goal_id,
@@ -250,7 +257,7 @@ routerPages.get("/chart", (req, res) => {
     }
   });
   routerPages.get("/viewReport7", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       const goal_id = 7;
       res.render("../views/Report/View_Report/viewReport7", {
         goal_id: goal_id,
@@ -260,7 +267,7 @@ routerPages.get("/chart", (req, res) => {
     }
   });
   routerPages.get("/viewReport8", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       const goal_id = 8;
       res.render("../views/Report/View_Report/viewReport8", {
         goal_id: goal_id,
@@ -270,7 +277,7 @@ routerPages.get("/chart", (req, res) => {
     }
   });
   routerPages.get("/viewReport9", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       const goal_id = 9;
       res.render("../views/Report/View_Report/viewReport9", {
         goal_id: goal_id,
@@ -286,7 +293,7 @@ routerPages.get("/chart", (req, res) => {
 // START OF TABULAR REPORT
 {
   routerPages.get("/goal1Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal1Table.hbs");
     } else {
       res.redirect("/");
@@ -294,7 +301,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/goal2Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal2Table.hbs");
     } else {
       res.redirect("/");
@@ -302,7 +309,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/goal3Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal3Table.hbs");
     } else {
       res.redirect("/");
@@ -310,7 +317,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/goal4Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal4Table.hbs");
     } else {
       res.redirect("/");
@@ -318,7 +325,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/goal5Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal5Table.hbs");
     } else {
       res.redirect("/");
@@ -326,7 +333,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/goal6Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal6Table.hbs");
     } else {
       res.redirect("/");
@@ -334,7 +341,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/goal7Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal7Table.hbs");
     } else {
       res.redirect("/");
@@ -342,7 +349,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/goal8Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal8Table.hbs");
     } else {
       res.redirect("/");
@@ -350,7 +357,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/goal9Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal9Table.hbs");
     } else {
       res.redirect("/");
@@ -360,13 +367,12 @@ routerPages.get("/chart", (req, res) => {
 // END OF TABULAR REPORT
 
 routerPages.get("/profile", authController.isLoggedIn, async (req, res) => {
-  if (req.user.username) {
+  if (req.user.email) {
     res.render("profile", {
-      username: req.user.username,
-      firstName: req.user.firstName,
-      lastName: req.user.lastName,
+      firstName: req.user.first_name,
+      lastName: req.user.last_name,
       email: req.user.email,
-      position: req.user.position,
+      position: req.user.privilege,
     });
   } else {
     res.redirect("/");
@@ -375,19 +381,19 @@ routerPages.get("/profile", authController.isLoggedIn, async (req, res) => {
 
 routerPages.get("/userDashboard", authController.isLoggedIn, (req, res) => {
   // this means there is a user we grabbed from DB
-  if (req.user.username) {
+  if (req.user.email) {
     // check if user is informarics HEAD
-    if (req.user.position === "facultyhead") {
+    if (privileges.facultyHeads.includes(req.user.position)) {
       res.render("../views/informaticsDashboard.hbs", {
-        username: req.user.username,
+        username: req.user.first_name,
       });
     } else if (req.user.position === "admin") {
       res.render("adminDashboard", {
-        username: req.user.username,
+        username: req.user.first_name,
       });
     } else {
       res.render("userDashboard", {
-        username: req.user.username,
+        username: req.user.first_name,
       });
     }
   } else {
@@ -400,8 +406,7 @@ routerPages.get(
   "/informaticsViewReport",
   authController.isLoggedIn,
   (req, res) => {
-    console.log(req.user.username);
-    if (req.user.username === "informaticshead") {
+    if (privileges.departmentHeads.includes(req.user.position)) {
       res.render(
         "../views/Report/View_Report/informatics/informaticsViewReport"
       );
@@ -421,7 +426,7 @@ routerPages.get(
 // START OF CS VIEW REPORT ROUTES
 {
   routerPages.get("/csViewReport1", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/CS/csViewReport1.hbs"
       );
@@ -431,7 +436,7 @@ routerPages.get(
   });
 
   routerPages.get("/csViewReport2", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/CS/csViewReport2.hbs"
       );
@@ -441,7 +446,7 @@ routerPages.get(
   });
 
   routerPages.get("/csViewReport3", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/CS/csViewReport3.hbs"
       );
@@ -451,7 +456,7 @@ routerPages.get(
   });
 
   routerPages.get("/csViewReport4", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/CS/csViewReport4.hbs"
       );
@@ -461,7 +466,7 @@ routerPages.get(
   });
 
   routerPages.get("/csViewReport5", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/CS/csViewReport5.hbs"
       );
@@ -471,7 +476,7 @@ routerPages.get(
   });
 
   routerPages.get("/csViewReport6", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/CS/csViewReport6.hbs"
       );
@@ -481,7 +486,7 @@ routerPages.get(
   });
 
   routerPages.get("/csViewReport7", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/CS/csViewReport7.hbs"
       );
@@ -491,7 +496,7 @@ routerPages.get(
   });
 
   routerPages.get("/csViewReport8", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/CS/csViewReport8.hbs"
       );
@@ -501,7 +506,7 @@ routerPages.get(
   });
 
   routerPages.get("/csViewReport9", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/CS/csViewReport9.hbs"
       );
@@ -516,7 +521,7 @@ routerPages.get(
 // START OF IS VIEW REPORT ROUTES
 {
   routerPages.get("/isViewReport1", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IS/isViewReport1.hbs"
       );
@@ -526,7 +531,7 @@ routerPages.get(
   });
 
   routerPages.get("/isViewReport2", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IS/isViewReport2.hbs"
       );
@@ -536,7 +541,7 @@ routerPages.get(
   });
 
   routerPages.get("/isViewReport3", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IS/isViewReport3.hbs"
       );
@@ -546,7 +551,7 @@ routerPages.get(
   });
 
   routerPages.get("/isViewReport4", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IS/isViewReport4.hbs"
       );
@@ -556,7 +561,7 @@ routerPages.get(
   });
 
   routerPages.get("/isViewReport5", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IS/isViewReport5.hbs"
       );
@@ -566,7 +571,7 @@ routerPages.get(
   });
 
   routerPages.get("/isViewReport6", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IS/isViewReport6.hbs"
       );
@@ -576,7 +581,7 @@ routerPages.get(
   });
 
   routerPages.get("/isViewReport7", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IS/isViewReport7.hbs"
       );
@@ -586,7 +591,7 @@ routerPages.get(
   });
 
   routerPages.get("/isViewReport8", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IS/isViewReport8.hbs"
       );
@@ -596,7 +601,7 @@ routerPages.get(
   });
 
   routerPages.get("/isViewReport9", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IS/isViewReport9.hbs"
       );
@@ -611,7 +616,7 @@ routerPages.get(
 // START OF IT VIEW REPORT ROUTES
 {
   routerPages.get("/itViewReport1", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IT/itViewReport1.hbs"
       );
@@ -621,7 +626,7 @@ routerPages.get(
   });
 
   routerPages.get("/itViewReport2", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IT/itViewReport2.hbs"
       );
@@ -630,7 +635,7 @@ routerPages.get(
     }
   });
   routerPages.get("/itViewReport3", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IT/itViewReport3.hbs"
       );
@@ -639,7 +644,7 @@ routerPages.get(
     }
   });
   routerPages.get("/itViewReport4", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IT/itViewReport4.hbs"
       );
@@ -648,7 +653,7 @@ routerPages.get(
     }
   });
   routerPages.get("/itViewReport5", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IT/itViewReport5.hbs"
       );
@@ -657,7 +662,7 @@ routerPages.get(
     }
   });
   routerPages.get("/itViewReport6", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IT/itViewReport6.hbs"
       );
@@ -666,14 +671,14 @@ routerPages.get(
     }
   });
   routerPages.get("/itViewReport7", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IT/itViewReport7.hbs"
       );
     }
   });
   routerPages.get("/itViewReport8", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IT/itViewReport8.hbs"
       );
@@ -682,7 +687,7 @@ routerPages.get(
     }
   });
   routerPages.get("/itViewReport9", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render(
         "../views/Report/View_Report/informatics/IT/itViewReport9.hbs"
       );
@@ -705,7 +710,7 @@ routerPages.get(
 // START OF >>> CREATE PLAN ROUTES
 {
   routerPages.get("/createPlan1", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Plan/Create_Plan/createPlan1.hbs");
     } else {
       res.redirect("/");
@@ -713,56 +718,56 @@ routerPages.get(
   });
 
   routerPages.get("/createPlan2", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Plan/Create_Plan/createPlan2");
     } else {
       res.redirect("/");
     }
   });
   routerPages.get("/createPlan3", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Plan/Create_Plan/createPlan3");
     } else {
       res.redirect("/");
     }
   });
   routerPages.get("/createPlan4", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Plan/Create_Plan/createPlan4");
     } else {
       res.redirect("/");
     }
   });
   routerPages.get("/createPlan5", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Plan/Create_Plan/createPlan5");
     } else {
       res.redirect("/");
     }
   });
   routerPages.get("/createPlan6", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Plan/Create_Plan/createPlan6");
     } else {
       res.redirect("/");
     }
   });
   routerPages.get("/createPlan7", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Plan/Create_Plan/createPlan7");
     } else {
       res.redirect("/");
     }
   });
   routerPages.get("/createPlan8", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Plan/Create_Plan/createPlan8");
     } else {
       res.redirect("/");
     }
   });
   routerPages.get("/createPlan9", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Plan/Create_Plan/createPlan9");
     } else {
       res.redirect("/");
@@ -774,7 +779,7 @@ routerPages.get(
 // START OF TABULAR Plan
 {
   routerPages.get("/goal1Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Plan/TabularReport/goal1Table.hbs");
     } else {
       res.redirect("/");
@@ -782,7 +787,7 @@ routerPages.get(
   });
 
   routerPages.get("/goal2Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Plan/TabularReport/goal2Table.hbs");
     } else {
       res.redirect("/");
@@ -790,7 +795,7 @@ routerPages.get(
   });
 
   routerPages.get("/goal3Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Plan/TabularReport/goal3Table.hbs");
     } else {
       res.redirect("/");
@@ -798,7 +803,7 @@ routerPages.get(
   });
 
   routerPages.get("/goal4Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Plan/TabularReport/goal4Table.hbs");
     } else {
       res.redirect("/");
@@ -806,7 +811,7 @@ routerPages.get(
   });
 
   routerPages.get("/goal5Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Plan/TabularReport/goal5Table.hbs");
     } else {
       res.redirect("/");
@@ -814,7 +819,7 @@ routerPages.get(
   });
 
   routerPages.get("/goal6Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Plan/TabularReport/goal6Table.hbs");
     } else {
       res.redirect("/");
@@ -822,7 +827,7 @@ routerPages.get(
   });
 
   routerPages.get("/goal7Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Plan/TabularReport/goal7Table.hbs");
     } else {
       res.redirect("/");
@@ -830,7 +835,7 @@ routerPages.get(
   });
 
   routerPages.get("/goal8Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Plan/TabularReport/goal8Table.hbs");
     } else {
       res.redirect("/");
@@ -838,7 +843,7 @@ routerPages.get(
   });
 
   routerPages.get("/goal9Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.username) {
+    if (req.user.email) {
       res.render("../views/Report/Create_Plan/TabularReport/goal9Table.hbs");
     } else {
       res.redirect("/");

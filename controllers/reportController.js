@@ -11,20 +11,15 @@ import authController from "./auth.js";
 
 async function handleReportSubmission(req, res) {
   console.log("Request body:", req.body);
-  const goalID = req.body.goal_id;
   const userID = req.user.id;
-  const username = req.user.username;
 
-  console.log("Goal ID:", goalID);
-  console.log("UserID", userID);
-  console.log("USername", username);
+
 
   const { textareas } = req.body;
   console.log(textareas);
 
   console.log("From submit report ", userID);
 
-  await addTextReport(userID, goalID, username, textareas);
 }
 
 const submitReport = [authController.isLoggedIn, handleReportSubmission];

@@ -17,13 +17,14 @@ import { promisify } from "util";
 const login = async (req, res, next) => {
   console.log(req.body);
   const { username, password } = req.body;
-  const user = await getUser(username);
+  const userss = await getUser(username);
+  const user = userss[0]
   console.log("User is", user);
 
   if (
     user &&
-    username === user.username &&
-    (await bcrypt.compare(password, user.password))
+    username === user.email &&
+    password === user.password
   ) {
     // Saturday March 4 2024 Work Starts Here by adding jwttokens
     const id = user.id;
@@ -184,7 +185,6 @@ const isLoggedIn = async (req, res, next) => {
         process.env.JWT_SECRET
       );
 
-      console.log("Decoded Token:", decodedToken);
 
       // Check if decodedToken is valid and has expected structure
       if (!decodedToken || !decodedToken.id) {
@@ -193,7 +193,6 @@ const isLoggedIn = async (req, res, next) => {
 
       // check if user still exist
       const returnedUser = await getUserByID(decodedToken.id);
-      console.log("Returned From DB: ", returnedUser);
 
       // Ensure returnedUser exists and has the necessary properties
       if (!returnedUser || returnedUser.length === 0) {
@@ -212,14 +211,12 @@ const isLoggedIn = async (req, res, next) => {
 
       req.user = {
         id: returnedUser[0].id,
-        username: returnedUser[0].username,
-        firstName: returnedUser[0].firstName,
-        lastName: returnedUser[0].lastName,
+        firstName: returnedUser[0].first_name,
+        lastName: returnedUser[0].last_name,
         email: returnedUser[0].email,
-        position: returnedUser[0].position,
+        position: returnedUser[0].privilege,
       };
 
-      console.log("req.user set to:", req.user);
       return next();
     } catch (error) {
       console.log(error);

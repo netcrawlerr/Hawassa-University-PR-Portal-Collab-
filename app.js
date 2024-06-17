@@ -40,6 +40,7 @@ import  SFRReport from './Database/models/SFRReport.model.js'
 import URWIPlan from './Database/models/URWIPlan.model.js'
 import URWIReport from './Database/models/URWIReport.model.js'
 import users from "./Database/models/user.model.js"
+import db from "./Database/models/index.js";
 
 db.sync({force: false}).then(() =>  {
   console.log('database and tables created')
