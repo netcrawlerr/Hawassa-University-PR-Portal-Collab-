@@ -171,14 +171,25 @@ function getTextareaValues() {
 // Function to submit report data
 function submitReportData() {
   const textareas = getTextareaValues(); // Get textarea values
+  const fields = document.getElementsByTagName('table input')
 
+  var inputDetails = [];
+
+// Loop through the NodeList and collect the input details
+fields.forEach(function(input) {
+    inputDetails.push({
+        name: input.name,
+        value: input.value
+    });
+});
+  
   const goalId = currentReport; // Use the currentReport variable as the goal_id
   fetch("/tasks/submitReport", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ goal_id: goalId, textareas: textareas }), // Send textarea values in JSON format
+    body: JSON.stringify({ dataset: inputDetails, textareas: textareas }), // Send textarea values in JSON format
   })
     .then((response) => response.json())
     .then((data) => {
@@ -189,30 +200,31 @@ function submitReportData() {
     });
 }
 
-document
-  .getElementById("reportForm")
-  .addEventListener("submit", async function (e) {
-    e.preventDefault();
-    const goalID = currentReport;
+// document
+//   .getElementById("reportForm")
+//   .addEventListener("submit", async function (e) {
+//     e.preventDefault();
+//     const goalID = currentReport;
 
-    try {
-      const response = await fetch("/tasks/viewReport", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ goal_id: goalID }),
-      });
+//     try {
+//       const response = await fetch("/tasks/viewReport", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ goal_id: goalID }),
+//       });
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch reports");
-      }
+//       if (!response.ok) {
+//         throw new Error("Failed to fetch reports");
+//       }
 
-      const data = await response.json();
-      console.log("Reports:", data);
-      // Here you can handle the response data and display the reports on the UI
-    } catch (error) {
-      console.error("Error fetching reports:", error);
-      // Handle the error condition, such as displaying an error message to the user
-    }
-  });
+//       const data = await response.json();
+//       console.log("Reports:", data);
+//       // Here you can handle the response data and display the reports on the UI
+//     } catch (error) {
+//       console.error("Error fetching reports:", error);
+//       // Handle the error condition, such as displaying an error message to the user
+//     }
+//   }
+// );

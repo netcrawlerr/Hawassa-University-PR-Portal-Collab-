@@ -11,8 +11,6 @@ taskAuth.post("/submitReport", reportController.submitReport, (req, res) => {
   console.log("Submitted ");
 });
 
-taskAuth.post("/viewReport", reportController.viewReport);
 
-taskAuth.post("/editReport", reportController.editReport);
 
 export default taskAuth;
