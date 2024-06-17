@@ -93,7 +93,7 @@ button[type="submit"]:hover {
 }
 
 .add-detail-button {
-  display: none;
+  /* display: none; */
 
   padding: 10px;
   width: 150px;
