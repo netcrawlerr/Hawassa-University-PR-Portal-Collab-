@@ -27,6 +27,7 @@ import ESAEOPlan from "./Database/models/ESAEOPlan.model.js"
 import ESAEOReport from "./Database/models/ESAEOReport.model.js"
 import FADPlan from "./Database/models/FADPlan.model.js"
 import FADReport from './Database/models/FADReport.model.js'
+import GeneralData from "./Database/models/generalData.model.js";
 import IIEPlan from './Database/models/IIEPlan.model.js'
 import IEEReport from './Database/models/IIEReport.model.js'
 import PRTRIPlan from './Database/models/PRTRIPlan.model.js'

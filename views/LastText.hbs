@@ -1,0 +1,163 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/dashboard.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <title>| Dashboard</title>
+  </head>
+  <body class="body">
+    <nav>
+      <img src="./logo.png" alt="" />
+      <!-- <p>Nav Bar Area</p> -->
+      <h1>HU PR PORTAL</h1>
+      <span class="account-icon"><i class="fa-regular fa-user"></i></span>
+    </nav>
+    <section class="main">
+      <div class="sidebar">
+        <ul class="sidebar--items">
+          <li>
+            <a href="/profile" class="active">
+              <span class="icon"><i class="ri-profile-line"></i></span>
+              <div class="sidebar--item">Profile</div>
+            </a>
+          </li>
+          <!-- <li>
+            <a href="#">
+              <span class="icon"><i class="ri-edit-box-line"></i></span>
+              <div class="sidebar--item">Planning</div>
+            </a>
+          </li> -->
+
+          <li>
+            <a href="#" class="sidebar--item" id="planning-toggle">
+              <span class="icon"><i class="ri-edit-box-line"></i></span>
+              <div>Planning</div>
+              <span class="dropdown-icon"><i
+                  class="ri-arrow-down-s-line"
+                ></i></span>
+            </a>
+            <ul class="dropdown-menu" id="planning-menu">
+              <li><a href="#">Create Plan</a></li>
+              <li><a href="#">View Plan</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="sidebar--item" id="reporting-toggle">
+              <span class="icon"><i class="ri-file-chart-line"></i></span>
+              <div>Reporting</div>
+              <span class="dropdown-icon"><i
+                  class="ri-arrow-down-s-line"
+                ></i></span>
+            </a>
+            <ul class="dropdown-menu" id="reporting-menu">
+              <li><a href="/createReport1">Create Report</a></li>
+              <li><a href="/viewReport1">View Report</a></li>
+            </ul>
+          </li>
+
+          <!-- basic data -->
+
+          <li>
+            <a href="#">
+              <span class="icon"><i class="ri-bar-chart-line"></i></span>
+              <div class="sidebar--item">Basic Data</div>
+            </a>
+          </li>
+        </ul>
+        <ul class="sidebar--bottom--items">
+          <li>
+            <a href="#">
+              <span class="icon"><i class="ri-question-line"></i></span>
+              <div class="sidebar--item">How to Use the System</div>
+            </a>
+          </li>
+          <li>
+            <a href="/auth/logout">
+              <span class="icon"><i class="ri-logout-box-r-line"></i></span>
+              <div class="sidebar--item">Logout</div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="main--container">
+        <div class="section--title">
+          {{#if username}}
+            <h3 class="title">Welcome back, {{username}}</h3>
+          {{/if}}
+        </div>
+        <div class="report-details">
+        <h1 id="reportTitle">ያጋጠሙ ችግሮች</h1>
+        <form id="reportForm" action="/tasks/submitReport" method="post">
+
+          <div id="reportTopics">
+            <!-- Report details will be dynamically in this spot -->
+          </div>
+          <button
+            class="add-detail-button"
+            id="addDetailButton"
+            type="button"
+            onclick="addReportDetail()"
+          >
+            Add Detail
+          </button>
+          
+        </form>
+
+      </div>
+       <div class="report-details">
+        <h1 id="reportTitle">የተወሰዱ የመፍትሔ እርምጃዎች</h1>
+        <form id="reportForm" action="/tasks/submitReport" method="post">
+
+          <div id="reportTopics">
+            <!-- Report details will be dynamically in this spot -->
+          </div>
+          <button
+            class="add-detail-button"
+            id="addDetailButton"
+            type="button"
+            onclick="addReportDetail()"
+          >
+            Add Detail
+          </button>
+         
+        </form>
+
+      </div>
+       <div class="report-details">
+        <h1 id="reportTitle">ምርጥ ተሞክሮ</h1>
+        <form id="reportForm" action="/tasks/submitReport" method="post">
+
+          <div id="reportTopics">
+            <!-- Report details will be dynamically in this spot -->
+          </div>
+          <button
+            class="add-detail-button"
+            id="addDetailButton"
+            type="button"
+            onclick="addReportDetail()"
+          >
+            Add Detail
+          </button>
+          <button type="submit" id="submitButton">Submit Reports</button>
+        </form>
+ <button type="submit" id="submitButton">Submit Reports</button>
+      </div>
+        <h1 id="reportTitle">ማጠቃለያ</h1>
+        <textarea placeholder="የማጠቃለያ ጽሑፎን ያስገቡ..."></textarea>
+
+
+
+
+      </div>
+    </section>
+  </body>
+  <script src="/userDashboardScript.js"></script>
+</html>
