@@ -78,7 +78,7 @@
 
       <div class="form-goalnumber">
         <h1>Goal 3</h1>
-        <form>
+        <form id="reportForm" action="/tasks/submitReport" method="post">
         <input type="hidden" name="tablename" value="ESAEOReport">
 
           <table>
@@ -658,6 +658,21 @@
               </tr>
             </tbody>
           </table>
+          <div class="report-details">
+          <h1 id="reportTitle">Report 1 Details</h1>
+
+          <div id="reportTopics">
+            <!-- Report details will be dynamically in this spot -->
+          </div>
+          <button
+            class="add-detail-button"
+            id="addDetailButton"
+            type="button"
+            onclick="addReportDetail()"
+          >
+            Add Detail
+          </button>
+      </div>
           <div class="submit">
             <input type="submit" value="Submit" name="submit" />
           </div>
@@ -666,4 +681,6 @@
     </div>
   </body>
   <script src="/tabularReport.js"></script>
+  <script src="/createReportScript.js"></script>
+
 </html>

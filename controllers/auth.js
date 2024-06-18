@@ -185,7 +185,6 @@ const isLoggedIn = async (req, res, next) => {
         process.env.JWT_SECRET
       );
 
-
       // Check if decodedToken is valid and has expected structure
       if (!decodedToken || !decodedToken.id) {
         return next(); // Proceed to next middleware or route
@@ -193,7 +192,6 @@ const isLoggedIn = async (req, res, next) => {
 
       // check if user still exist
       const returnedUser = await getUserByID(decodedToken.id);
-
       // Ensure returnedUser exists and has the necessary properties
       if (!returnedUser || returnedUser.length === 0) {
         return next(); // Proceed to next middleware or route

@@ -1,0 +1,209 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/informatics.css" />
+    {{! <link rel="stylesheet" href="/viewReport.css" /> }}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <style>
+
+    </style>
+    <nav>
+      <img src="/logo.png" alt="" />
+
+      <h1>HU PR PORTAL</h1>
+      <div class="dropdown">
+        <span class="account-icon" onclick="toggleDropdown()"><i
+            class="fa-regular fa-user"
+          ></i></span>
+        <div class="dropdown-content" id="dropdownContent">
+          <a href="/userDashboard">Dashboard</a>
+          <a href="/auth/logout">Logout</a>
+        </div>
+      </div>
+      {{! <span class="account-icon"><i class="fa-regular fa-user"></i></span> }}
+    </nav>
+
+    <button class="btn">Informatics</button>
+
+    <div class="info">
+      <p>Select the Report You Want To See</p>
+    </div>
+
+    <div class="container">
+      <div>
+        <form action="/tasks/viewReport" method="post">
+
+          <h4>Select Department</h4>
+          <select name="department" id="departmentSelect">
+            <option value="cshead">Computer Science</option>
+            <option value="ithead">Information Technology</option>
+            <option value="ishead">Information System</option>
+          </select>
+
+          <h4>Select Goal Number</h4>
+          <select name="goal_id" id="categorySelect">
+            <option value="1">Goal 1</option>
+            <option value="2">Goal 2</option>
+            <option value="3">Goal 3</option>
+            <option value="4">Goal 4</option>
+            <option value="5">Goal 5</option>
+            <option value="6">Goal 6</option>
+            <option value="7">Goal 7</option>
+            <option value="8">Goal 8</option>
+            <option value="9">Goal 9</option>
+          </select>
+          <button id="select-dep" type="submit">Show Reports</button>
+        </form>
+        <br />
+        <br />
+        <button
+          style="border: none; background-color: #FFD43B; color: black; "
+          id=""
+          type="submit"
+        ><a
+            style="text-decoration: none; color: black;"
+            href="/informaticsCompileReport"
+          >Compile Reports</a></button>
+
+        {{! <form action="">
+          <input type="submit" name="" value="Generate Report" id="" />
+        </form> }}
+      </div>
+
+      <div id="reportTopics">
+        <div class="report-details">
+          <h1 id="reportTitle">Report {{goal_id}} Details</h1>
+          <form id="reportForm" action="/tasks/submitReport" method="post">
+        <input type="hidden" name="tablename" value="IIEPlan">
+
+          <table border="1px">
+            <tbody>
+              <tr>
+                <td rowspan="2">ግብ-1</td>
+                <td rowspan="2">ቁልፍ የውጤት አመላካቾች</td>
+                <td rowspan="2">መለኪያ</td>
+                <td rowspan="2">መነሻ (2015 እቅድ አፈጻጸም)</td>
+                <td rowspan="2">የ2016 እቅድ</td>
+                <td colspan="4">የ2016 በጀት ዓመት 3 ወራት እቅድ አፈፃፀም ሪፖርት</td>
+              </tr>
+              <tr>
+                <td>3 ወራት ዕቅድ</td>
+                <td>3 ወራት ዕቅድ አፈጻጸም</td>
+                <td>አፈፃፀም (%)</td>
+                <td>ምርመራ</td>
+              </tr>
+              <tr>
+                <td rowspan="8"></td>
+                <td>ወቅቱንና ጥራቱን ጠብቆ የተዘጋጀ ዕቅድና ሪፖርት</td>
+                <td>በቁጥር</td>
+                <td><input class="datavaluess" type="number" min="0" name="initial1" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="final1" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPlan1" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPerformance1" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="totalPerformance1" id="" /></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>የአቅም ግንባታ ስልጠናዎች ያገኙ አመራሮች</td>
+                <td>በመቶኛ</td>
+                <td><input class="datavaluess" type="number" min="0" name="initial2" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="final2" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPlan2" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPerformance2" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="totalPerformance2" id="" /></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>በተለያዩ ሙያዊ ስልጠናዎች የሰለጠኑ ሠራተኞች</td>
+                <td>በመቶኛ</td>
+                <td><input class="datavaluess" type="number" min="0" name="initial3" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="final3" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPlan3" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPerformance3" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="totalPerformance3" id="" /></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>በቴክኖሎጂ በመደገፍ የተደራጀ የመረጃ አያያዝ (HEMIS)</td>
+                <td>በመቶኛ</td>
+                <td><input class="datavaluess" type="number" min="0" name="initial4" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="final4" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPlan4" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPerformance4" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="totalPerformance4" id="" /></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>ኦቶሜት የተደረጉ አገልግሎቶች</td>
+                <td>በቁጥር</td>
+                <td><input class="datavaluess" type="number" min="0" name="initial5" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="final5" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPlan5" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPerformance5" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="totalPerformance5" id="" /></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>የተከናወነ ተቋማዊ የመዋቅር/ አደረጃጀት ክለሳ ብዛት</td>
+                <td>በቁጥር</td>
+                <td><input class="datavaluess" type="number" min="0" name="initial6" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="final6" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPlan6" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPerformance6" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="totalPerformance6" id="" /></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>የተከናወነ የሩብ ዓመት ሪፖርት ግምገማ</td>
+                <td>በቁጥር</td>
+                <td><input class="datavaluess" type="number" min="0" name="initial7" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="final7" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPlan7" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPerformance7" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="totalPerformance7" id="" /></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>የተዘረጋ ሥርዓት የክትትልና ግምገማ</td>
+                <td>በቁጥር</td>
+                <td><input class="datavaluess" type="number" min="0" name="initial8" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="final8" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPlan8" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPerformance8" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="totalPerformance8" id="" /></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="report-details">
+          <h1 id="reportTitle">Report 1 Details</h1>
+
+          <div id="reportTopics">
+            <!-- Report details will be dynamically in this spot -->
+          </div>
+          <button
+            class="add-detail-button"
+            id="addDetailButton"
+            type="button"
+            onclick="addReportDetail()"
+          >
+            Add Detail
+          </button>
+      </div>
+          <div class="submit">
+            <input type="submit" value="Submit" name="submit" />
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

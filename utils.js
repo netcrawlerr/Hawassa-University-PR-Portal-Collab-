@@ -54,3 +54,27 @@ SFRReport,
 URWIPlan,
 URWIReport,
 }
+
+export const goalsPlan = {
+    1: IIEPlan,
+    2: FADPlan,
+    3: ESAEOPlan,
+    4: PSTAIPlan,
+    5: PRTRIPlan,
+    6: URWIPlan,
+    7: ESAEOPlan,
+    8: QAIPlan,
+    9: EBUAIGPlan
+}
+
+export  const tableNames = {
+    1: 'IIEPlan',
+    2: 'FADPlan',
+    3: 'ESAEOPlan',
+    4: 'PSTAIPlan',
+    5: 'PRTRIPlan',
+    6: 'URWIPlan',
+    7: 'ESAEOPlan',
+    8: 'QAIPlan',
+    9: 'EBUAIGPlan'
+}

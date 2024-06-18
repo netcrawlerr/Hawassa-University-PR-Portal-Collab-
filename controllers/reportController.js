@@ -2,7 +2,8 @@
 import authController from "./auth.js";
 import IIEReport from "../Database/models/IIEReport.model.js";
 import GeneralData from "../Database/models/generalData.model.js";
-import { dataValues, DELIMITER, tables } from "../utils.js";
+import { dataValues, DELIMITER, goalsPlan, tableNames, tables } from "../utils.js";
+import users from "../Database/models/user.model.js";
 
 const categorizeData = (datas) => {
   const dataset = {};
@@ -89,9 +90,27 @@ async function handleReportSubmission(req, res) {
 const submitReport = [authController.isLoggedIn, handleReportSubmission];
 
 // function to view the report
-// 
-// Middleware for checking if the user is logged in
+const handleViewReport = async (req, res) => {
+  const {department, goal_id} = req.body;
+  const table = goalsPlan[goal_id];
+  let userss = await users.findAll({where: {privilege: department}})
+  const user = userss[0]
+  let tabularDatas = await table.findAll({where: {submittedBy: user.id}})
+  const tabularData = tabularDatas[0]
+  let general_id = `${tableNames[goal_id]}${tabularData.id}`
+  console.log('general_id', general_id)
+  let generals = await GeneralData.findAll({where: {tableDataId: `${tableNames[goal_id]}${tabularData.id}`}})
+  const general = generals[0]
+  console.log(tabularData)
+  const splitedGeneral = general.split(DELIMITER)
 
+  res.status(200).render(`/compile${goal_id}`,{
+    tabularData: tabularData, general:splitedGeneral
+  })
+
+}
+// Middleware for checking if the user is logged in
+const viewReport = [authController.isLoggedIn, handleViewReport]
 
 const submitTable1Report = async (req, res) => {};
 const submitTable2Report = async (req, res) => {};
@@ -103,4 +122,4 @@ const submitTable7Report = async (req, res) => {};
 const submitTable8Report = async (req, res) => {};
 const submitTable9Report = async (req, res) => {};
 
-export default { submitReport };
+export default { submitReport , viewReport};

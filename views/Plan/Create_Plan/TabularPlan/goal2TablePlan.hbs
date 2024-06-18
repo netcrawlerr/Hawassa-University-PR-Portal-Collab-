@@ -78,8 +78,9 @@
 
       <div class="form-goalnumber">
         <h1>Goal 2</h1>
-        <form>
-        <input type="hidden" name="tablename" value="FADReport">
+         <form id="reportForm" action="/tasks/submitReport" method="post">
+
+        <input type="hidden" name="tablename" value="FADPlan">
           <table>
             <tbody>
               <tr>
@@ -100,65 +101,80 @@
                 <td rowspan="6"></td>
                 <td>ተሟልተዉ የተደራጁ ቢሮዎች ያሉዋቸዉ የስራ ክፍሎች</td>
                 <td>በመቶኛ</td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="initial1" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="final1" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPlan1" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPerformance1" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="totalPerformance1" id="" /></td>
                 <td></td>
               </tr>
               <tr>
                 <td>በቴክኖሎጂ የተደራጁ መማሪያ ክፍሎች (ስማርት ክፍሎች)</td>
                 <td>በመቶኛ</td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="initial2" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="final2" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPlan2" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPerformance2" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="totalPerformance2" id="" /></td>
                 <td></td>
               </tr>
               <tr>
                 <td>የቴ/ኢ ቤተ-መጽሐፍትን በቴክኖሎጂ ማደራጀት</td>
                 <td>በመቶኛ</td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="initial3" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="final3" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPlan3" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPerformance3" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="totalPerformance3" id="" /></td>
                 <td></td>
               </tr>
               <tr>
                 <td>የኢንተርኔት አገልግሎት ፍጥነት</td>
                 <td>በሜጋ ቢት (Mb/s)</td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="initial4" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="final4" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPlan4" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPerformance4" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="totalPerformance4" id="" /></td>
                 <td></td>
               </tr>
               <tr>
                 <td>በስታንዳርድ መሰረት የተገነባ የቆሻሻ ማስወገጃ (በግቢ)</td>
                 <td>በቁጥር</td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="initial5" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="final5" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPlan5" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPerformance5" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="totalPerformance5" id="" /></td>
                 <td></td>
               </tr>
               <tr>
                 <td>ዘመናዊ ቴክኖሎጂን በመጠቀም የግቢያቸውን ሰላምና ደህንነት ማረጋገጥ</td>
                 <td>በመቶኛ</td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="initial6" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="final6" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPlan6" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPerformance6" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="totalPerformance6" id="" /></td>
                 <td></td>
               </tr>
             </tbody>
           </table>
+          <div class="report-details">
+          <h1 id="reportTitle">Report 1 Details</h1>
+
+          <div id="reportTopics">
+            <!-- Report details will be dynamically in this spot -->
+          </div>
+          <button
+            class="add-detail-button"
+            id="addDetailButton"
+            type="button"
+            onclick="addReportDetail()"
+          >
+            Add Detail
+          </button>
+      </div>
           <div class="submit">
             <input type="submit" value="Submit" name="submit" />
           </div>
@@ -167,4 +183,6 @@
     </div>
   </body>
   <script src="./tabularReport.js"></script>
+  <script src="/createReportScript.js"></script>
+
 </html>

@@ -77,8 +77,9 @@
 
       <div class="form-goalnumber">
         <h1>Goal 5</h1>
-        <form>
-        <input type="hidden" name="tablename" value="PRTRIReport">
+        <form id="reportForm" action="/tasks/submitReport" method="post">
+
+        <input type="hidden" name="tablename" value="PRTRIPlan">
 
           <table>
             <tbody>
@@ -100,25 +101,40 @@
                 <td rowspan="2"></td>
                 <td>የቀረበ አገልግሎት የማህበረሰብ ምክረ-ሃሳብ ብዛት</td>
                 <td>በቁጥር</td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="initial1" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="final1" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPlan1" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="threeMonthPerformance1" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="totalPerformance1" id="" /></td>
                 <td></td>
               </tr>
               <tr>
                 <td>በጀት ተመድቦላቸው ወደ ስራ የገቡ የማህበረሰብ አገልግሎት ምክረ ሀሳቦች ብዛት</td>
                 <td>በቁጥር</td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
-                <td><input class="datavaluess" type="number" min="0" name="" id="" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="" id="initial2" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="" id="final2" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="" id="threeMonthPlan2" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="" id="threeMonthPerformance2" /></td>
+                <td><input class="datavaluess" type="number" min="0" name="" id="totalPerformance2" /></td>
                 <td></td>
               </tr>
             </tbody>
           </table>
+          <div class="report-details">
+          <h1 id="reportTitle">Report 1 Details</h1>
+
+          <div id="reportTopics">
+            <!-- Report details will be dynamically in this spot -->
+          </div>
+          <button
+            class="add-detail-button"
+            id="addDetailButton"
+            type="button"
+            onclick="addReportDetail()"
+          >
+            Add Detail
+          </button>
+      </div>
           <div class="submit">
             <input type="submit" value="Submit" name="submit" />
           </div>
@@ -127,4 +143,5 @@
     </div>
   </body>
   <script src="/tabularReport.js"></script>
+  <script src="/createReportScript.js"></script>
 </html>

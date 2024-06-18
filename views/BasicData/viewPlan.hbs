@@ -1,0 +1,121 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/informatics.css" />
+    {{! <link rel="stylesheet" href="/viewReport.css" /> }}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <style>
+
+    </style>
+    <nav>
+      <img src="/logo.png" alt="" />
+
+      <h1>HU PR PORTAL</h1>
+      <div class="dropdown">
+        <span class="account-icon" onclick="toggleDropdown()"><i
+            class="fa-regular fa-user"
+          ></i></span>
+        <div class="dropdown-content" id="dropdownContent">
+          <a href="/userDashboard">Dashboard</a>
+          <a href="/auth/logout">Logout</a>
+        </div>
+      </div>
+      {{! <span class="account-icon"><i class="fa-regular fa-user"></i></span> }}
+    </nav>
+
+    <button class="btn">Informatics</button>
+
+    <div class="info">
+      <p>Select the Report You Want To See</p>
+    </div>
+
+    <div class="container">
+      <div>
+        <form action="/tasks/viewReport" method="post">
+
+          <h4>Select Department</h4>
+          <select name="department" id="departmentSelect">
+            <option value="computerScienceHead">Computer Science</option>
+            <option value="informationTechnologyHead">Information Technology</option>
+            <option value="informationSystemHead">Information System</option>
+          </select>
+
+          <h4>Select Goal Number</h4>
+          <select name="goal_id" id="categorySelect">
+            <button><a href="/compile1"><option value="1">Goal 1</option></a></button>
+            <button><a href="/compile2"><option value="2">Goal 2</option></a></button>
+            <button><a href="/compile3"><option value="3">Goal 3</option></a></button>
+            <button><a href="/compile4"><option value="4">Goal 4</option></a></button>
+            <button><a href="/compile5"><option value="5">Goal 5</option></a></button>
+            <button><a href="/compile6"><option value="6">Goal 6</option></a></button>
+            <button><a href="/compile7"><option value="7">Goal 7</option></a></button>
+            <button><a href="/compile8"><option value="8">Goal 8</option></a></button>
+            <button><a href="/compile9"><option value="9">Goal 9</option></a></button>
+          </select>
+          <button id="select-dep" type="submit">Show Reports</button>
+        </form>
+        <br />
+        <br />
+        <button
+          style="border: none; background-color: #FFD43B; color: black; "
+          id=""
+          type="submit"
+        ><a
+            style="text-decoration: none; color: black;"
+            href="/informaticsCompileReport"
+          >Compile Reports</a></button>
+
+        {{! <form action="">
+          <input type="submit" name="" value="Generate Report" id="" />
+        </form> }}
+      </div>
+
+      <div id="reportTopics">
+        <div class="report-details">
+          <h1 id="reportTitle">Report {{goal_id}} Details</h1>
+          <div id="reportContent">
+            {{#if reports}}
+              <form id="form-textarea" action="/tasks/editReport" method="post">
+                <input
+                  type="hidden"
+                  id="goal_id"
+                  name="goal_id"
+                  value="{{goal_id}}"
+                />
+                <ol>
+                  {{#each reports}}
+                    <div style="display: flex; align-items: center;">
+                      <textarea
+                        readonly
+                        name="reportTextArea[]"
+                        style="flex-grow: 1; margin-right: 10px;"
+                      >{{this.report_details}}</textarea>
+                      {{! <i
+                        class="fas fa-edit"
+                        style="color: #FFD43B; font-size: 26px;"
+                      ></i> }}
+                    </div>
+                  {{/each}}
+                </ol>
+                {{! <input
+                  type="submit"
+                  value="Submit Edit"
+                  style="padding: 5px;"
+                /> }}
+              </form>
+            {{/if}}
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

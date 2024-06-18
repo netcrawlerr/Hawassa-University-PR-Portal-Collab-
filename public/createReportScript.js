@@ -173,6 +173,7 @@ function submitReportData() {
   const textareas = getTextareaValues(); // Get textarea values
   const fields = document.getElementsByClassName('datavaluess')
   const hiddenInput = document.querySelector('form[id="reportForm"] input[type="hidden"]');
+  console.log(hiddenInput, "hidden input")
  const datalist = Array.from(fields)
   console.log("fields:", fields)
   var inputDetails = [];

@@ -115,11 +115,11 @@ routerPages.get("/chart", (req, res) => {
 // START OF >>> CREATE REPORT ROUTES
 {
   routerPages.get("/createReport1", authController.isLoggedIn, (req, res) => {
-    if (req.user.email) {
-      res.render("../views/Report/Create_Report/TextualReport/createReport1");
-    } else {
-      res.redirect("/");
-    }
+    // if (req.user.email) {
+      res.render("../views/Report/Create_Report/TextualReport/createReport1.hbs");
+    // } else {
+      // res.redirect("/");
+    // }
   });
 
   routerPages.get("/createReport2", authController.isLoggedIn, (req, res) => {
@@ -712,7 +712,7 @@ routerPages.get(
 {
   routerPages.get("/createPlan1", authController.isLoggedIn, (req, res) => {
     if (req.user.email) {
-      res.render("../views/Plan/Create_Plan/createPlan1.hbs");
+      res.render("../views/Plan/Create_Plan/TabularPlan/goal1TablePlan.hbs");
     } else {
       res.redirect("/");
     }
@@ -720,56 +720,64 @@ routerPages.get(
 
   routerPages.get("/createPlan2", authController.isLoggedIn, (req, res) => {
     if (req.user.email) {
-      res.render("../views/Plan/Create_Plan/createPlan2");
+      res.render("../views/Plan/Create_Plan/TabularPlan/goal2TablePlan.hbs");
+
     } else {
       res.redirect("/");
     }
   });
   routerPages.get("/createPlan3", authController.isLoggedIn, (req, res) => {
     if (req.user.email) {
-      res.render("../views/Plan/Create_Plan/createPlan3");
+      res.render("../views/Plan/Create_Plan/TabularPlan/goal3TablePlan.hbs");
+
     } else {
       res.redirect("/");
     }
   });
   routerPages.get("/createPlan4", authController.isLoggedIn, (req, res) => {
     if (req.user.email) {
-      res.render("../views/Plan/Create_Plan/createPlan4");
+      res.render("../views/Plan/Create_Plan/TabularPlan/goal4TablePlan.hbs");
+      ;
     } else {
       res.redirect("/");
     }
   });
   routerPages.get("/createPlan5", authController.isLoggedIn, (req, res) => {
     if (req.user.email) {
-      res.render("../views/Plan/Create_Plan/createPlan5");
+      res.render("../views/Plan/Create_Plan/TabularPlan/goal5TablePlan.hbs");
+
     } else {
       res.redirect("/");
     }
   });
   routerPages.get("/createPlan6", authController.isLoggedIn, (req, res) => {
     if (req.user.email) {
-      res.render("../views/Plan/Create_Plan/createPlan6");
+      res.render("../views/Plan/Create_Plan/TabularPlan/goal6TablePlan.hbs");
+
     } else {
       res.redirect("/");
     }
   });
   routerPages.get("/createPlan7", authController.isLoggedIn, (req, res) => {
     if (req.user.email) {
-      res.render("../views/Plan/Create_Plan/createPlan7");
+      res.render("../views/Plan/Create_Plan/TabularPlan/goal7TablePlan.hbs");
+
     } else {
       res.redirect("/");
     }
   });
   routerPages.get("/createPlan8", authController.isLoggedIn, (req, res) => {
     if (req.user.email) {
-      res.render("../views/Plan/Create_Plan/createPlan8");
+      res.render("../views/Plan/Create_Plan/TabularPlan/goal8TablePlan.hbs");
+
     } else {
       res.redirect("/");
     }
   });
   routerPages.get("/createPlan9", authController.isLoggedIn, (req, res) => {
     if (req.user.email) {
-      res.render("../views/Plan/Create_Plan/createPlan9");
+      res.render("../views/Plan/Create_Plan/TabularPlan/goal9TablePlan.hbs");
+
     } else {
       res.redirect("/");
     }
@@ -851,6 +859,58 @@ routerPages.get(
     }
   });
 }
+// compiling the data by deans and administrators of the campus
+routerPages.get("/compileplan", authController.isLoggedIn, (req, res) => {
+  if (req.user.email) {
+    res.render("../views/BasicData/viewPlan.hbs")
+  }
+})
+routerPages.get("/compileplan1", authController.isLoggedIn, (req, res) => {
+  if (req.user.email) {
+    res.render("../views/compile/1.hbs")
+  }
+})
+routerPages.get("/compileplan2", authController.isLoggedIn, (req, res) => {
+  if (req.user.email) {
+    res.render("../views/compile/2.hbs")
+  }
+})
+routerPages.get("/compileplan3", authController.isLoggedIn, (req, res) => {
+  if (req.user.email) {
+    res.render("../views/compile/3.hbs")
+  }
+})
+routerPages.get("/compileplan4", authController.isLoggedIn, (req, res) => {
+  if (req.user.email) {
+    res.render("../views/compile/4.hbs")
+  }
+})
+routerPages.get("/compileplan5", authController.isLoggedIn, (req, res) => {
+  if (req.user.email) {
+    res.render("../views/compile/5.hbs")
+  }
+})
+routerPages.get("/compileplan6", authController.isLoggedIn, (req, res) => {
+  if (req.user.email) {
+    res.render("../views/compile/6.hbs")
+  }
+})
+routerPages.get("/compileplan7", authController.isLoggedIn, (req, res) => {
+  if (req.user.email) {
+    res.render("../views/compile/7.hbs")
+  }
+})
+routerPages.get("/compileplan8", authController.isLoggedIn, (req, res) => {
+  if (req.user.email) {
+    res.render("../views/compile/8.hbs")
+  }
+})
+routerPages.get("/compileplan9", authController.isLoggedIn, (req, res) => {
+  if (req.user.email) {
+    res.render("../views/compile/9.hbs")
+  }
+})
+
 // END OF TABULAR Plan
 
 export default routerPages;
