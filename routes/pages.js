@@ -294,7 +294,7 @@ routerPages.get("/chart", (req, res) => {
 // START OF TABULAR REPORT
 {
   routerPages.get("/goal1Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.email) {
+    if (req.user && req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal1Table.hbs");
     } else {
       res.redirect("/");
@@ -302,7 +302,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/goal2Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.email) {
+    if (req.user && req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal2Table.hbs");
     } else {
       res.redirect("/");
@@ -310,7 +310,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/goal3Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.email) {
+    if (req.user && req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal3Table.hbs");
     } else {
       res.redirect("/");
@@ -318,7 +318,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/goal4Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.email) {
+    if (req.user && req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal4Table.hbs");
     } else {
       res.redirect("/");
@@ -326,7 +326,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/goal5Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.email) {
+    if (req.user && req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal5Table.hbs");
     } else {
       res.redirect("/");
@@ -334,7 +334,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/goal6Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.email) {
+    if (req.user && req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal6Table.hbs");
     } else {
       res.redirect("/");
@@ -342,7 +342,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/goal7Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.email) {
+    if (req.user && req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal7Table.hbs");
     } else {
       res.redirect("/");
@@ -350,7 +350,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/goal8Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.email) {
+    if (req.user && req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal8Table.hbs");
     } else {
       res.redirect("/");
@@ -358,7 +358,7 @@ routerPages.get("/chart", (req, res) => {
   });
 
   routerPages.get("/goal9Table", authController.isLoggedIn, (req, res) => {
-    if (req.user.email) {
+    if (req.user && req.user.email) {
       res.render("../views/Report/Create_Report/TabularReport/goal9Table.hbs");
     } else {
       res.redirect("/");
@@ -386,15 +386,15 @@ routerPages.get("/userDashboard", authController.isLoggedIn, (req, res) => {
     // check if user is informarics HEAD
     if (privileges.facultyHeads.includes(req.user.position)) {
       res.render("../views/informaticsDashboard.hbs", {
-        username: req.user.first_name,
+        firstName: req.user.first_name,
       });
     } else if (req.user.position === "admin") {
       res.render("adminDashboard", {
-        username: req.user.first_name,
+        firstName: req.user.first_name,
       });
     } else {
       res.render("userDashboard", {
-        username: req.user.first_name,
+        firstName: req.user.first_name,
       });
     }
   } else {
