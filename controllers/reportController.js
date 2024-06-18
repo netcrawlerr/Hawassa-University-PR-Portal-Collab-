@@ -2,9 +2,9 @@
 import authController from "./auth.js";
 import IIEReport from "../Database/models/IIEReport.model.js";
 import GeneralData from "../Database/models/generalData.model.js";
-import { dataValues, DELIMITER } from "../views/utils.js";
+import { dataValues, DELIMITER, tables } from "../utils.js";
 
-const categorizeData = (datas, textareas) => {
+const categorizeData = (datas) => {
   const dataset = {};
   for (let type of dataValues.types) {
     const keys = datas
@@ -30,8 +30,6 @@ const categorizeData = (datas, textareas) => {
         init++
       }
       console.log(oneData)
-      let generalData = textareas.join(DELIMITER);
-      oneData["generalData"] = generalData;
       let allNotNull = Object.values(oneData).every(data => data != null || data != '')
       if (allNotNull){
         dataset[type] = oneData;
@@ -45,15 +43,12 @@ const categorizeData = (datas, textareas) => {
   return dataset
 };
 async function handleReportSubmission(req, res) {
-  console.log("Request body:", req.body.dataset[0]);
+  console.log("Request body:", req.body.dataset);
   const userID = req.user.id;
-
-  // const {}
-
-  
-  const { textareas } = req.body;
+ 
+  const { textareas, tablename } = req.body;
   let generalData = textareas.join(DELIMITER)
-  let validKeys = categorizeData(req.body.dataset , textareas)
+  let validKeys = categorizeData(req.body.dataset)
   const dataset = Object.fromEntries(
     Object.entries(validKeys).filter(([key, value]) => {
       return Object.values(value).every(val => val != "")
@@ -64,21 +59,22 @@ async function handleReportSubmission(req, res) {
     return false
   }
   console.log("From submit report ", userID);
-  for (let data of Object.values(dataset)) {
+  for (let [key, data] of Object.entries(dataset)) {
 
     data['submittedBy'] = userID
   data['receivedBy'] = userID;
+  data['type'] = key
   delete data.key
+  let table = tables[tablename]
+  console.log(table);
     let report;
-     await IIEReport.create(data).then((data) => {
+     await table.create(data).then((data) => {
       report = data;
-      console.log('data IIE created', report)
       report.save()
     })
     .catch(err => console.log(err));
 
-    console.log("report", report)
-    let tableDataId = `IIEReport${report.id}`
+    let tableDataId = `${tablename}${report.id}`
     let general;
      await GeneralData.create({generalData, tableDataId})
     .then(data => {

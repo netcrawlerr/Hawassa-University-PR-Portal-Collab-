@@ -4,10 +4,7 @@ import users from "./user.model.js"
 import QAIPlan from "./QAIPlan.model.js"
 
 const QAIReport = db.define( 'QAIReport', {
-    generalData: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
+ 
     data1 : {
         type: DataTypes.FLOAT,
         allowNull:false
@@ -35,6 +32,10 @@ data6 : {
 data7 : {
     type: DataTypes.INTEGER,
     allowNull:false
+},
+ type: {
+    type: DataTypes.STRING,
+    allowNull: false
 },
 approved: { type: DataTypes.STRING, allowNull:true},
 feedback: {type: DataTypes.STRING(500), allowNull: true}

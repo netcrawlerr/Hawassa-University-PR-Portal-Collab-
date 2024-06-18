@@ -4,10 +4,7 @@ import users from "./user.model.js"
 import ESAEOPPlan from "./ESAEOPlan.model.js"
 
 const ESAEOPReport = db.define( 'ESAEOPReport', {
-    generalData: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
+ 
     data1 : {
         type: DataTypes.STRING,
         allowNull:false

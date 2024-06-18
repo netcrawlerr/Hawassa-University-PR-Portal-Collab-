@@ -172,6 +172,7 @@ function getTextareaValues() {
 function submitReportData() {
   const textareas = getTextareaValues(); // Get textarea values
   const fields = document.getElementsByClassName('datavaluess')
+  const hiddenInput = document.querySelector('form[id="reportForm"] input[type="hidden"]');
  const datalist = Array.from(fields)
   console.log("fields:", fields)
   var inputDetails = [];
@@ -193,7 +194,7 @@ console.log(inputDetails)
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ dataset: inputDetails, textareas: textareas }), // Send textarea values in JSON format
+    body: JSON.stringify({ dataset: inputDetails, textareas: textareas , tablename: hiddenInput.value}), // Send textarea values in JSON format
   })
     .then((response) => response.json())
     .then((data) => {

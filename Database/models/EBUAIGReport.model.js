@@ -4,10 +4,6 @@ import users from "./user.model.js"
 import EBUAIGPlan from './EBUAIGPlan.model.js'
 
 const EBUAIGReport = db.define( 'EBUAIGReport', {
-    generalData: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
     data1 : {
         type: DataTypes.STRING,
         allowNull:false

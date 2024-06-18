@@ -3,10 +3,7 @@ import { DataTypes } from "sequelize"
 import users from "./user.model.js"
 
 const FADPlan = db.define( 'FADPlan', {
-    generalData: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
+ 
     data1 : {
         type: DataTypes.FLOAT,
         allowNull:false
@@ -31,9 +28,9 @@ data6 : {
     type: DataTypes.FLOAT,
     allowNull:false
 },
-data7 : {
-    type: DataTypes.FLOAT,
-    allowNull:false
+ type: {
+    type: DataTypes.STRING,
+    allowNull: false
 },
 approved: { type: DataTypes.STRING, allowNull:true},
 feedback: {type: DataTypes.STRING(500), allowNull: true}

@@ -3,10 +3,7 @@ import { DataTypes } from "sequelize"
 import users from "./user.model.js"
 
 const PRTRIPlan = db.define( 'PRTRIPlan', {
-    generalData: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
+ 
     data1 : {
         type: DataTypes.INTEGER,
         allowNull:false
@@ -14,6 +11,10 @@ const PRTRIPlan = db.define( 'PRTRIPlan', {
 data2 : {
     type: DataTypes.INTEGER,
     allowNull:false
+},
+ type: {
+    type: DataTypes.STRING,
+    allowNull: false
 },
 approved: { type: DataTypes.STRING, allowNull:true},
 feedback: {type: DataTypes.STRING(500), allowNull: true}

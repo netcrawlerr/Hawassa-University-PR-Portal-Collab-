@@ -4,10 +4,7 @@ import users from "./user.model.js"
 import IIEPlan from "./IIEPlan.model.js"
 
 const IIEReport = db.define( 'IIEReport', {
-    generalData: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
+ 
     data1 : {
         type: DataTypes.INTEGER,
         allowNull:false
@@ -39,6 +36,10 @@ data7 : {
 data8 : {
     type: DataTypes.FLOAT,
     allowNull:false
+},
+ type: {
+    type: DataTypes.STRING,
+    allowNull: false
 },
 approved: { type: DataTypes.STRING, allowNull:true},
 feedback: {type: DataTypes.STRING(500), allowNull: true}

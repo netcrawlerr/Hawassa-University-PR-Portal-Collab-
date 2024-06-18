@@ -3,10 +3,7 @@ import { DataTypes } from "sequelize"
 import users from "./user.model.js"
 
 const EBUAIGPlan = db.define( 'EBUAIGPlan', {
-    generalData: {
-        type: DataTypes.FLOAT,
-        allowNull: false
-    },
+
     data1 : {
         type: DataTypes.FLOAT,
         allowNull:false

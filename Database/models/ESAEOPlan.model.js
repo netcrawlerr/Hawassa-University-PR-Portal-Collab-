@@ -3,10 +3,7 @@ import { DataTypes } from "sequelize"
 import users from "./user.model.js"
 
 const ESAEOPPlan = db.define( 'ESAEOPPlan', {
-    generalData: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
+
     data1 : {
         type: DataTypes.STRING,
         allowNull:false

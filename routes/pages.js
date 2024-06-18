@@ -2,7 +2,7 @@ import express from "express";
 import authController from "../controllers/auth.js";
 import auth from "../controllers/auth.js";
 import { getAllUsers } from "../Database/database.js";
-import { privileges } from "../views/utils.js";
+import { privileges } from "../utils.js";
 const routerPages = express.Router();
 
 routerPages.get("/", (req, res) => {
@@ -201,6 +201,7 @@ routerPages.get("/chart", (req, res) => {
     } else if (req.user && req.user.position === "informaticshead") {
       res.render("../views/informaticsDashboard.hbs");
     } else {
+      console.log(req.user.position)
       res.redirect("/");
     }
   });

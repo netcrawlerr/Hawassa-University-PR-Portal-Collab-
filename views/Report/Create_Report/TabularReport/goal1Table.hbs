@@ -78,6 +78,7 @@
       <div class="form-goalnumber">
         <h1>Goal 1</h1>
         <form id="reportForm" action="/tasks/submitReport" method="post">
+        <input type="hidden" name="tablename" value="IIEReport">
           <table border="1px">
             <tbody>
               <tr>
@@ -257,7 +258,7 @@
           </button>
       </div>
           <div class="submit">
-            <input type="submit" value="Submit" name="submit" onclick=""/>
+            <input type="submit" value="Submit" name="submit"/>
           </div>
         </form>
       </div>
